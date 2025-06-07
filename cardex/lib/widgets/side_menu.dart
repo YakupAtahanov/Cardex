@@ -20,14 +20,23 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 16),
         children: [
-          const Text("CardEX", style: AppTextStyles.sectionHeading),
+          const Text("CardEX", style: AppTextStyles.sora12White),
           const Divider(),
+          const Text("Collections", style: AppTextStyles.sora24White),
           ...collections.map((name) {
             final isSelected = name == selected;
             return ListTile(
-              title: Text(name),
+              leading: Container(
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+              ),
+              title: Text(name, style: AppTextStyles.inter16White),
               selected: isSelected,
               onTap: () {
                 setState(() {
