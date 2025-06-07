@@ -19,6 +19,13 @@ class AppTextStyles {
     color: Colors.white,
   );
 
+  static const TextStyle inter16WhiteBold = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 16,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle inter16Grey = TextStyle(
     fontFamily: 'Inter',
     fontSize: 16,

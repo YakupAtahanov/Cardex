@@ -29,14 +29,20 @@ class _SideMenuState extends State<SideMenu> {
             final isSelected = name == selected;
             return ListTile(
               leading: Container(
-                width: 8,
-                height: 8,
+                width: 4,
+                height: 4,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
               ),
-              title: Text(name, style: AppTextStyles.inter16White),
+              title: Text(
+                name,
+                style:
+                    isSelected
+                        ? AppTextStyles.inter16WhiteBold
+                        : AppTextStyles.inter16White,
+              ),
               selected: isSelected,
               onTap: () {
                 setState(() {
