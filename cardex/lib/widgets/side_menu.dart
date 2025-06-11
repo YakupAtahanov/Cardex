@@ -9,8 +9,8 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  // TODO: BACKEND: Variables must be dynamic. These are examples.
   final List<String> collections = [
-    // Must be dynamic. This is an example.
     "Available Cards",
     "Student Cards",
     "Loyalty Cards",
@@ -25,10 +25,15 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           const Text("CardEX", style: AppTextStyles.sora12White),
           const Divider(),
+          // TODO: The "example" variables are used here. Must build an architecture.
           const Text("Collections", style: AppTextStyles.sora24White),
           ...collections.map((name) {
             final isSelected = name == selected;
             return ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 23,
+                vertical: -30,
+              ),
               leading: Container(
                 width: 4,
                 height: 4,
@@ -37,6 +42,11 @@ class _SideMenuState extends State<SideMenu> {
                   shape: BoxShape.circle,
                 ),
               ),
+              dense: true,
+              minVerticalPadding: 0,
+              horizontalTitleGap: -3,
+
+              // Below this line are the properties that use the variables provided (selected and isSelected variables).
               title: Text(
                 name,
                 style:
@@ -45,13 +55,6 @@ class _SideMenuState extends State<SideMenu> {
                         : AppTextStyles.inter16White,
               ),
               selected: isSelected,
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 23,
-                vertical: -30,
-              ),
-              dense: true,
-              minVerticalPadding: 0,
-              horizontalTitleGap: -3,
               onTap: () {
                 setState(() {
                   selected = name;
