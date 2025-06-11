@@ -15,12 +15,10 @@ class MyApp extends StatelessWidget {
       title: "CardEX",
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Color(0xFF121212),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontFamily: 'Inter', color: Colors.white),
-        ),
+        textTheme: const TextTheme(bodyMedium: AppTextStyles.inter16White),
       ),
       home: const HomeScreen(),
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -47,7 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
         ),
-        actions: [IconButton(icon: const Icon(Icons.add), onPressed: () {})],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {}, //TODO: BACKEND: ADD NEW CARD BUTTON
+          ),
+        ],
       ),
       drawer: const SideMenu(),
       body: const Center(child: Text("Main content goes here")),

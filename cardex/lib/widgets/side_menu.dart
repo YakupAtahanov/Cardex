@@ -10,6 +10,7 @@ class SideMenu extends StatefulWidget {
 
 class _SideMenuState extends State<SideMenu> {
   final List<String> collections = [
+    // Must be dynamic. This is an example.
     "Available Cards",
     "Student Cards",
     "Loyalty Cards",
@@ -44,6 +45,13 @@ class _SideMenuState extends State<SideMenu> {
                         : AppTextStyles.inter16White,
               ),
               selected: isSelected,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 23,
+                vertical: -30,
+              ),
+              dense: true,
+              minVerticalPadding: 0,
+              horizontalTitleGap: -3,
               onTap: () {
                 setState(() {
                   selected = name;
