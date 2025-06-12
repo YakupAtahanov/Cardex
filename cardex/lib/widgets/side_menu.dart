@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/themes/text_styles.dart';
+import 'package:cardex/widgets/collection_tile.dart';
+import 'package:cardex/widgets/collection_options_menu.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -28,8 +30,23 @@ class _SideMenuState extends State<SideMenu> {
           // TODO: The "example" variables are used here. Must build an architecture.
           const Text("Collections", style: AppTextStyles.sora24White),
           ...collections.map((name) {
-            final isSelected = name == selected;
-            return ListTile(
+            return CollectionTile(
+              name: name,
+              isSelected: name == selected,
+              onTap: () {
+                setState(() {
+                  selected = name;
+                  Navigator.of(context).pop();
+                });
+              },
+              onMore: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (_) => CollectionOptionsMenu(),
+                );
+              },
+            );
+            /* return ListTile(
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 23,
                 vertical: -30,
@@ -62,7 +79,41 @@ class _SideMenuState extends State<SideMenu> {
                 });
               },
             );
+            */
           }),
+          const Divider(),
+
+          ListTile(
+            leading: const Icon(Icons.add, color: Colors.white),
+            title: const Text(
+              'Add Collection',
+              style: AppTextStyles.inter16White,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              // _showAddCollectionDialog(context);
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.settings, color: Colors.white),
+            title: const Text('Settings', style: AppTextStyles.inter16White),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          const Divider(),
+
+          ListTile(
+            leading: const Icon(Icons.feedback_outlined, color: Colors.grey),
+            title: const Text(
+              'Leave a feedback',
+              style: AppTextStyles.inter16Grey,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
     );
