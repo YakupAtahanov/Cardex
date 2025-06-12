@@ -16,6 +16,7 @@ class _SideMenuState extends State<SideMenu> {
     "Available Cards",
     "Student Cards",
     "Loyalty Cards",
+    "Hmar Cards"
   ];
   String selected = "Available Cards";
 

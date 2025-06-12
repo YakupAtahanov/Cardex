@@ -1,3 +1,5 @@
+# Disable deprecated warning for now
+add_compile_options(-Wno-deprecated-literal-operator)
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.13)
 project(runner LANGUAGES CXX)
