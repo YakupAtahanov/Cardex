@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cardex/themes/text_styles.dart';
-import 'package:cardex/widgets/collection_tile.dart';
-import 'package:cardex/widgets/collection_options_menu.dart';
+import 'package:cardex/frontend/themes/text_styles.dart';
+import 'package:cardex/frontend/widgets/collection_tile.dart';
+import 'package:cardex/frontend/widgets/collection_options_menu.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});

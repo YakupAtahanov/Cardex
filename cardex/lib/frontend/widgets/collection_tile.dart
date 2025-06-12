@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cardex/themes/text_styles.dart';
+import 'package:cardex/frontend/themes/text_styles.dart';
 
 class CollectionTile extends StatelessWidget {
   final String name;

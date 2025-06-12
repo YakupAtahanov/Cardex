@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cardex/themes/text_styles.dart';
-import 'package:cardex/widgets/side_menu.dart';
+import 'package:cardex/frontend/themes/text_styles.dart';
+import 'package:cardex/frontend/widgets/side_menu.dart';
 
 void main() {
   runApp(MyApp());
