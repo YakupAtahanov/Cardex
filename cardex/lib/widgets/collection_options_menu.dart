@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class CollectionOptionsMenu extends StatelessWidget {
   // final CardCollection collection;
 
-  const CollectionOptionsMenu({Key? key}) //, required this.collection
-    : super(key: key);
+  const CollectionOptionsMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
