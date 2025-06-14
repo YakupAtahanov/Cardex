@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/side_menu.dart';
+import 'package:cardex/frontend/widgets/card_widget.dart';
+import 'package:cardex/frontend/widgets/cards_scroll_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const SideMenu(),
-      body: const Center(child: Text("Main content goes here")),
+      body: CardsScrollWidget(),
     );
   }
 }
