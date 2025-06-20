@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:cardex/models/Collection.dart';
-import 'package:cardex/models/Card.dart';
+import '../../models/Collection.dart';
+import '../../models/Card.dart';
 
 class AvailableCardsCollection with ChangeNotifier {
   final List<Collection> _collections = [];
@@ -41,9 +42,9 @@ class AvailableCardsCollection with ChangeNotifier {
   }
 
   void renameCollection(String oldName, String newName) {
-    final collection = _collections.firstWhere((c) => c.name == oldName, orElse: () => null);
-    if (collection != null) {
-      collection.name = newName;
+    final index = _collections.indexWhere((c) => c.name == oldName);
+    if (index != -1) {
+      _collections[index].name = newName;
       notifyListeners();
     }
   }

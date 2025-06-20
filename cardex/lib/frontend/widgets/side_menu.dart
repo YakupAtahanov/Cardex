@@ -44,7 +44,7 @@ class _SideMenuState extends State<SideMenu> {
               onMore: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (_) => CollectionOptionsMenu(),
+                  builder: (_) => CollectionOptionsMenu(collectionName: '',),
                 );
               },
             );
