@@ -1,4 +1,4 @@
-import 'package:cardex/models/collection.dart';
+import 'package:cardex/models/Collection.dart';
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/side_menu.dart';
