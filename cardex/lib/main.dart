@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/side_menu.dart';
-import 'package:cardex/frontend/widgets/card_widget.dart';
 import 'package:cardex/frontend/widgets/cards_scroll_widget.dart';
+import 'package:cardex/frontend/widgets/app_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,48 +13,65 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const List<String> collections = [
+      "Available cards",
+      "Bus cards",
+      "Coupons",
+    ];
+
     return MaterialApp(
       title: "CardEX",
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Color(0xFF121212),
         textTheme: const TextTheme(bodyMedium: AppTextStyles.inter16White),
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(
+        collections: collections,
+        selectedCollection: collections.first,
+      ), // Will need a CollectionManager
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class HomeScreen extends StatefulWidget {
-  // HomeScreen({Key key}, ...) : super(key: key);
-  const HomeScreen({super.key});
+  final List<String> collections;
+  final String selectedCollection;
+  const HomeScreen({
+    super.key,
+    required this.collections,
+    required this.selectedCollection,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late String selectedCollection;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedCollection = widget.selectedCollection;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Available Cards"),
-        centerTitle: true,
-        leading: Builder(
-          builder:
-              (context) => IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-              ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {}, //TODO: BACKEND: ADD NEW CARD BUTTON
-          ),
-        ],
+      appBar: CustomAppBar(
+        collections: widget.collections,
+        selectedCollection: selectedCollection,
+        onCollectionChanged: (value) {
+          if (value != null) {
+            setState(() => selectedCollection = value);
+          }
+        },
+        onAdd: () {
+          // TODO: show add card modal
+        },
       ),
-      drawer: const SideMenu(),
+      drawer: SideMenu(collections: widget.collections),
       body: CardsScrollWidget(),
     );
   }
