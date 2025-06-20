@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cardex/models/Card.dart';
+import 'package:cardex/models/card.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 
 class CardWidget extends StatelessWidget {
