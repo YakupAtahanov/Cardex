@@ -8,11 +8,19 @@ class Collection {
   Collection({required this.id, required this.name, List<Card>? cards})
     : cards = cards ?? [];
 
-  void addCard(Card card) {
+  bool addCard(Card card) {
+    if (containsCard(card)) return false;
     cards.add(card);
+    return true;
   }
 
-  void removeCard(Card card) {
+  bool removeCard(Card card) {
+    if (!containsCard(card)) return false;
     cards.remove(card);
+    return true;
+  }
+
+  bool containsCard(Card card) {
+    return cards.any((c) => c.id == card.id);
   }
 }
