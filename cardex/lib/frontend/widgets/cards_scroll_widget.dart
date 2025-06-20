@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/widgets/card_widget.dart';
+import 'package:cardex/models/collection.dart';
 
 class CardsScrollWidget extends StatelessWidget {
-  const CardsScrollWidget({super.key});
+  final Collection collection;
+  const CardsScrollWidget({super.key, required this.collection});
 
   @override
   Widget build(BuildContext context) {
-    final cards = [
-      {'title': 'Worker card', 'height': 90.0},
-      {'title': 'Coupon', 'height': 110.0},
-      {'title': 'Bank of America card', 'height': 140.0},
-      {'title': 'Bus card', 'height': 110.0},
-      {'title': 'School card', 'height': 90.0},
-    ];
-
     return Center(
       child: ListWheelScrollView.useDelegate(
         itemExtent: 160,
@@ -22,11 +16,8 @@ class CardsScrollWidget extends StatelessWidget {
         perspective: 0.003,
         childDelegate: ListWheelChildLoopingListDelegate(
           children:
-              cards.map((card) {
-                return CardWidget(
-                  title: card['title'] as String,
-                  height: card['height'] as double,
-                );
+              collection.cards.map((card) {
+                return CardWidget(title: card.name as String);
               }).toList(),
         ),
       ),

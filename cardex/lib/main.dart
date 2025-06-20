@@ -1,8 +1,10 @@
+import 'package:cardex/models/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/side_menu.dart';
 import 'package:cardex/frontend/widgets/cards_scroll_widget.dart';
 import 'package:cardex/frontend/widgets/app_bar.dart';
+import 'package:cardex/testing/mock_data.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,12 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<String> collections = [
-      "Available cards",
-      "Bus cards",
-      "Coupons",
-    ];
-
     return MaterialApp(
       title: "CardEX",
       theme: ThemeData.dark().copyWith(
@@ -26,8 +22,8 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(bodyMedium: AppTextStyles.inter16White),
       ),
       home: HomeScreen(
-        collections: collections,
-        selectedCollection: collections.first,
+        collections: mockCollections.toList(),
+        selectedCollection: mockCollections.first,
       ), // Will need a CollectionManager
       debugShowCheckedModeBanner: false,
     );
@@ -35,8 +31,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
-  final List<String> collections;
-  final String selectedCollection;
+  final List<Collection> collections;
+  final Collection selectedCollection;
   const HomeScreen({
     super.key,
     required this.collections,
@@ -48,7 +44,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late String selectedCollection;
+  late Collection selectedCollection;
 
   @override
   void initState() {
@@ -64,7 +60,13 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedCollection: selectedCollection,
         onCollectionChanged: (value) {
           if (value != null) {
-            setState(() => selectedCollection = value);
+            setState(
+              () =>
+                  selectedCollection = widget.collections.firstWhere(
+                    (c) => c.name == value,
+                    orElse: () => widget.selectedCollection,
+                  ),
+            );
           }
         },
         onAdd: () {
@@ -72,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       drawer: SideMenu(collections: widget.collections),
-      body: CardsScrollWidget(),
+      body: CardsScrollWidget(collection: selectedCollection),
     );
   }
 }

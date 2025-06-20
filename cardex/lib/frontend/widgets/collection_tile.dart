@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
+import 'package:cardex/models/collection.dart';
 
 class CollectionTile extends StatelessWidget {
   final String name;
   final bool isSelected;
   final VoidCallback onTap, onMore;
+  final CollectionPermission permission;
 
   const CollectionTile({
     super.key,
@@ -12,6 +14,7 @@ class CollectionTile extends StatelessWidget {
     required this.isSelected,
     required this.onTap,
     required this.onMore,
+    required this.permission,
   });
 
   @override
@@ -47,18 +50,19 @@ class CollectionTile extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(
-                height: 33,
-                width: 33,
-                child: IconButton(
-                  icon: const Icon(Icons.more_vert, size: 22),
-                  color: Colors.white70,
-                  splashRadius: 48,
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  onPressed: onMore,
+              if (permission != CollectionPermission.systemDefault)
+                SizedBox(
+                  height: 33,
+                  width: 33,
+                  child: IconButton(
+                    icon: const Icon(Icons.more_vert, size: 22),
+                    color: Colors.white70,
+                    splashRadius: 48,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    onPressed: onMore,
+                  ),
                 ),
-              ),
             ],
           ),
         ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
+import 'package:cardex/models/collection.dart';
+import 'package:cardex/models/card.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final List<String> collections;
-  final String selectedCollection;
+  final List<Collection> collections;
+  final Collection selectedCollection;
   final ValueChanged<String?> onCollectionChanged;
   final VoidCallback onAdd;
 
@@ -23,12 +25,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: DropdownButton<String>(
           dropdownColor: const Color(0xFF1E1E1E),
           style: AppTextStyles.inter16WhiteBold,
-          value: selectedCollection,
+          value: selectedCollection.name,
           icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
           onChanged: onCollectionChanged,
           items:
-              collections.map((name) {
-                return DropdownMenuItem<String>(value: name, child: Text(name));
+              collections.map((collection) {
+                return DropdownMenuItem<String>(
+                  value: collection.name,
+                  child: Text(collection.name),
+                );
               }).toList(),
         ),
       ),

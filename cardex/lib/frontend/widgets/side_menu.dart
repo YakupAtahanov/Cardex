@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/collection_tile.dart';
 import 'package:cardex/frontend/widgets/collection_options_menu.dart';
+import 'package:cardex/models/collection.dart';
 
 class SideMenu extends StatefulWidget {
-  final List<String> collections;
+  final List<Collection> collections;
   const SideMenu({super.key, required this.collections});
 
   @override
@@ -12,7 +13,6 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
-  // TODO: BACKEND: Variables must be dynamic. These are examples.
   String selected = "Available Cards";
 
   @override
@@ -23,15 +23,15 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           const Text("CardEX", style: AppTextStyles.sora12White),
           const Divider(),
-          // TODO: The "example" variables are used here. Must build an architecture.
           const Text("Collections", style: AppTextStyles.sora24White),
-          ...widget.collections.map((name) {
+          ...widget.collections.map((collection) {
             return CollectionTile(
-              name: name,
-              isSelected: name == selected,
+              name: collection.name,
+              isSelected: collection.name == selected,
+              permission: collection.permission,
               onTap: () {
                 setState(() {
-                  selected = name;
+                  selected = collection.name;
                   Navigator.of(context).pop();
                 });
               },
