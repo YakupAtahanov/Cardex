@@ -1,12 +1,19 @@
 import 'card.dart';
 
+enum CollectionPermission { readonly, editable, systemDefault }
+
 class Collection {
   final String id;
   final String name;
   final List<Card> cards;
+  final CollectionPermission permission;
 
-  Collection({required this.id, required this.name, List<Card>? cards})
-    : cards = cards ?? [];
+  Collection({
+    required this.id,
+    required this.name,
+    required this.permission,
+    List<Card>? cards,
+  }) : cards = cards ?? [];
 
   bool addCard(Card card) {
     if (containsCard(card)) return false;
