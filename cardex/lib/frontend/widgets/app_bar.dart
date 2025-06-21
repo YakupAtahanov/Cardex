@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/models/collection.dart';
-import 'package:cardex/models/card.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Collection> collections;

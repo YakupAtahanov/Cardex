@@ -5,7 +5,8 @@ import 'package:cardex/frontend/widgets/side_menu.dart';
 import 'package:cardex/frontend/widgets/cards_scroll_widget.dart';
 import 'package:cardex/frontend/widgets/app_bar.dart';
 import 'package:cardex/testing/mock_data.dart';
-
+import 'package:cardex/services/collection_manager.dart';
+0
 void main() {
   runApp(MyApp());
 }
@@ -31,9 +32,10 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
+  final _manager = CollectionManager();
   final List<Collection> collections;
   final Collection selectedCollection;
-  const HomeScreen({
+  HomeScreen({
     super.key,
     required this.collections,
     required this.selectedCollection,
