@@ -1,5 +1,5 @@
-import 'package:cardex/models/card.dart';
-import 'package:cardex/models/collection.dart';
+import 'package:cardex/models/Card.dart';
+import 'package:cardex/models/Collection.dart';
 
 final List<Card> mockCards = [
   Card(
