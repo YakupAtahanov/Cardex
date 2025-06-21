@@ -1,4 +1,4 @@
-import 'Card.dart';
+import 'card.dart';
 
 enum CollectionPermission { readonly, editable, systemDefault }
 

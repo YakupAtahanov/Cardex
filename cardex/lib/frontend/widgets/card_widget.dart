@@ -6,7 +6,7 @@ class CardWidget extends StatelessWidget {
   final String title;
   final double height = 280.0;
 
-  const CardWidget({Key? key, required this.title}) : super(key: key);
+  const CardWidget({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

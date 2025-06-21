@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/collection_tile.dart';
 import 'package:cardex/frontend/widgets/collection_options_menu.dart';
-import 'package:cardex/models/Collection.dart';
+import 'package:cardex/models/collection.dart';
 
 class SideMenu extends StatefulWidget {
   final List<Collection> collections;
