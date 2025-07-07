@@ -1,3 +1,4 @@
+import 'package:cardex/models/collection_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/collection_tile.dart';
@@ -41,7 +42,7 @@ class _SideMenuState extends State<SideMenu> {
                   context: context,
                   builder: (_) => CollectionOptionsMenu(collectionName: '',),
                 );
-              }, permission: null,
+              }, permission: CollectionPermission.readOnly,
             );
             /* return ListTile(
               contentPadding: const EdgeInsets.symmetric(

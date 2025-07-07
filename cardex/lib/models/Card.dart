@@ -1,19 +1,7 @@
-<<<<<<< HEAD
 
-class CardModel {
-  String id;
-  String title;
-  String number;
-
-  CardModel({
-    required this.id,
-    required this.title,
-    required this.number,
-  });
-=======
 import 'dart:typed_data';
 
-class Card {
+class CardModel {
   final String id;
   final String name;
   final String? description;
@@ -22,7 +10,7 @@ class Card {
   final Uint8List? backImage;
   final DateTime createdAt;
 
-  Card({
+  CardModel({
     required this.id,
     required this.name,
     this.description,
@@ -31,5 +19,4 @@ class Card {
     this.backImage,
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
->>>>>>> backend-trial-1
 }

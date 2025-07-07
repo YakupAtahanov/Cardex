@@ -1,3 +1,5 @@
+
+import 'package:cardex/models/collection_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/models/Collection.dart';
@@ -6,7 +8,7 @@ class CollectionTile extends StatelessWidget {
   final String name;
   final bool isSelected;
   final VoidCallback onTap, onMore;
-  // final CollectionPermission permission;
+  final CollectionPermission permission;
 
   const CollectionTile({
     super.key,
@@ -14,7 +16,7 @@ class CollectionTile extends StatelessWidget {
     required this.isSelected,
     required this.onTap,
     required this.onMore,
-    // required this.permission,
+    required this.permission,
   });
 
   @override
