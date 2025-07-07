@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/collection_tile.dart';
 import 'package:cardex/frontend/widgets/collection_options_menu.dart';
-import 'package:cardex/models/collection.dart';
+import 'package:cardex/models/Collection.dart';
 
 class SideMenu extends StatefulWidget {
   final List<String> collections;
@@ -39,9 +39,9 @@ class _SideMenuState extends State<SideMenu> {
               onMore: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (_) => CollectionOptionsMenu(),
+                  builder: (_) => CollectionOptionsMenu(collectionName: '',),
                 );
-              },
+              }, permission: null,
             );
             /* return ListTile(
               contentPadding: const EdgeInsets.symmetric(
