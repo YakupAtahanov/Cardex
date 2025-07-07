@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
-import 'package:cardex/models/Collection.dart';
-import 'package:cardex/models/Card.dart';
+import 'package:cardex/models/collection.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Collection> collections;
@@ -10,12 +9,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onAdd;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.collections,
     required this.selectedCollection,
     required this.onCollectionChanged,
     required this.onAdd,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

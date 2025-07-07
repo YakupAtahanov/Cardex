@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/widgets/card_widget.dart';
-import 'package:cardex/models/Collection.dart';
+import 'package:cardex/models/collection.dart';
 
 class CardsScrollWidget extends StatelessWidget {
   final Collection collection;
@@ -17,7 +17,7 @@ class CardsScrollWidget extends StatelessWidget {
         childDelegate: ListWheelChildLoopingListDelegate(
           children:
               collection.cards.map((card) {
-                return CardWidget(title: card.name as String);
+                return CardWidget(title: card.name);
               }).toList(),
         ),
       ),

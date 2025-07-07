@@ -1,10 +1,12 @@
-import 'package:cardex/models/Collection.dart';
+import 'package:cardex/models/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:cardex/frontend/themes/text_styles.dart';
 import 'package:cardex/frontend/widgets/side_menu.dart';
 import 'package:cardex/frontend/widgets/cards_scroll_widget.dart';
 import 'package:cardex/frontend/widgets/app_bar.dart';
 import 'package:cardex/testing/mock_data.dart';
+import 'package:cardex/services/collection_manager.dart';
+import 'package:cardex/frontend/widgets/add_card_form.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,9 +33,10 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
+  final _manager = CollectionManager();
   final List<Collection> collections;
   final Collection selectedCollection;
-  const HomeScreen({
+  HomeScreen({
     super.key,
     required this.collections,
     required this.selectedCollection,
@@ -70,7 +73,21 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
         onAdd: () {
-          // TODO: show add card modal
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: const Color(0xFF1E1E1E),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            builder:
+                (_) => AddCardForm(
+                  onSave: (title, description) {
+                    // TODO: add card to selected collection
+                    print("New card added: $title - $description");
+                  },
+                ),
+          );
         },
       ),
       drawer: SideMenu(collections: widget.collections),
