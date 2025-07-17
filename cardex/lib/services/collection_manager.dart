@@ -1,4 +1,4 @@
-import 'package:cardex/models/collection.dart';
+import 'package:cardex/models/Collection.dart';
 
 class CollectionManager {
   List<Collection> collections = [];

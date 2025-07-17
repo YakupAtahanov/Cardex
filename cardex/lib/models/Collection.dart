@@ -1,6 +1,5 @@
 import 'Card.dart';
-
-enum CollectionPermission { readonly, editable, systemDefault }
+import 'collection_permission.dart';
 
 class Collection {
   final String id;
