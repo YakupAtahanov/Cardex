@@ -6,7 +6,7 @@ import 'package:cardex/frontend/widgets/collection_options_menu.dart';
 import 'package:cardex/models/Collection.dart';
 
 class SideMenu extends StatefulWidget {
-  final List<String> collections;
+  final List<Collection> collections;
   const SideMenu({super.key, required this.collections});
 
   @override
@@ -27,22 +27,23 @@ class _SideMenuState extends State<SideMenu> {
           const Divider(),
           // TODO: The "example" variables are used here. Must build an architecture.
           const Text("Collections", style: AppTextStyles.sora24White),
-          ...widget.collections.map((name) {
+          ...widget.collections.map((collection) {
             return CollectionTile(
-              name: name,
-              isSelected: name == selected,
+              name: collection.name,
+              isSelected: collection.name == selected,
               onTap: () {
                 setState(() {
-                  selected = name;
+                  selected = collection.name;
                   Navigator.of(context).pop();
                 });
               },
               onMore: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (_) => CollectionOptionsMenu(collectionName: '',),
+                  builder: (_) => CollectionOptionsMenu(collectionName: collection.name),
                 );
-              }, permission: CollectionPermission.readOnly,
+              }, 
+              permission: collection.permission,
             );
             /* return ListTile(
               contentPadding: const EdgeInsets.symmetric(
